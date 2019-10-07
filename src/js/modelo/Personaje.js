@@ -6,7 +6,7 @@ class Personaje {
         this.id = id;
         this.fecha = fecha;
     }
-    
+
     getPosX() {
         return this.posX;
     }

@@ -2,10 +2,14 @@ class Creador {
     constructor() {
         this.pantalla = loadImage("./data/creador.jpg");
         this.pintarBase = loadImage("./data/basegato.png");
+        this.objetoOjosVerdes = loadImage("./data/ojosverdes.png");
         this.input = new Input(655, 77);
         this.posX = 306.186;
         this.posY = 350;
-        this.mover = false;
+        this.posOjoVerX = 684.394;
+        this.posOjoVerY = 261.798;
+        this.moverBase = false;
+        this.moverObjOjo = false;
         //this.personaje = new Personaje();
     }
 
@@ -17,14 +21,16 @@ class Creador {
         this.input.mostarTexto();
         imageMode(CENTER);
         image(this.pintarBase, this.posX, this.posY);
+        image(this.objetoOjosVerdes, this.posOjoVerX, this.posOjoVerY);
         imageMode(CORNER);
 
         //Cambiar el cursor del mouse
         let base = (mouseX > 306.186 - (398 / 2) && mouseX < 306.186 + (398 / 2) && mouseY > 350 - (590 / 2) && mouseY < 350 + (590 / 2));
         let botonGuardar = (mouseX > 652 && mouseX < 868 && mouseY > 601 && mouseY < 658);
         let botonGuardados = (mouseX > 881 && mouseX < 1096 && mouseY > 601 && mouseY < 658);
+        let botonOjos = (mouseX > 684.394 - (127 / 2) && mouseX < 684.394 + (127 / 2) && mouseY > 261.798 - (50 / 2) && mouseY < 261.798 + (50 / 2));
         let botonInput = (mouseX > 655 && mouseX < 920 && mouseY > 77 && mouseY < 107);
-        if (base || botonGuardar || botonGuardados || botonInput) {
+        if (base || botonGuardar || botonGuardados || botonOjos || botonInput) {
             cursor(HAND);
         } else {
             cursor(ARROW);
@@ -33,23 +39,40 @@ class Creador {
 
     //Mover base con objetos
     activarMoverObjetos() {
-        if (mouseX > 306.186 - (398 / 2) && mouseX < 306.186 + (398 / 2) && mouseY > 350 - (590 / 2) && mouseY < 350 + (590 / 2) && !this.mover) {
-            this.mover = true;
+        //Mover Base
+        if (mouseX > 306.186 - (398 / 2) && mouseX < 306.186 + (398 / 2) && mouseY > 350 - (590 / 2) && mouseY < 350 + (590 / 2) && !this.moverBase) {
+            this.moverBase = true;
+        }
+
+        //Mover Ojos
+        if ((mouseX > 684.394 - (127 / 2) && mouseX < 684.394 + (127 / 2) && mouseY > 261.798 - (50 / 2) && mouseY < 261.798 + (50 / 2)) && !this.moverObjOjo) {
+            this.moverObjOjo = true;
         }
     }
 
     moverObjetos(mX, mY) {
-        if (this.mover) {
+        if (this.moverObjOjo) {
+            this.posOjoVerX = mX;
+            this.posOjoVerY = mY;
+        }
+
+        if (this.moverBase) {
             this.posX = mX;
             this.posY = mY;
         }
     }
 
     soltarObjeto() {
-        if (this.mover) {
+        //Soltar Ojo
+        if(mouseX > 306.186 - (398 / 2) && mouseX < 306.186 + (398 / 2) && mouseY > 350 - (590 / 2) && mouseY < 350 + (590 / 2) && this.moverObjOjo){
+            //this.posOjoVerX = this.posX - 
+        }
+
+        //Soltar base
+        if (this.moverBase) {
             this.posX = 306.186;
             this.posY = 350;
-            this.mover = false;
+            this.moverBase = false;
         }
     }
 

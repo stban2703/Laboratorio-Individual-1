@@ -12,9 +12,9 @@ function draw() {
 
 function keyTyped() {
     if (keyCode != BACKSPACE) {
-        logica.escribirNombre();
+        logica.getCreador().escribirTextoInput(key);
     } else {
-        logica.borrarNombre();
+        logica.getCreador().eliminarTextoInput();
     }
 }
 
@@ -24,10 +24,9 @@ function mousePressed() {
 }
 
 function mouseDragged() {
-    logica.arrastrarObjeto();
-
+    logica.getCreador().moverObjetos(mouseX, mouseY);
 }
 
 function mouseReleased() {
-    logica.liberarObjeto();
+    logica.getCreador().soltarObjeto();
 }

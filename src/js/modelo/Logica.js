@@ -46,19 +46,35 @@ class Logica {
         }
     }
 
-    escribirNombre() {
-        this.creador.escribirTextoInput(key);
+    getInicio() {
+        return this.inicio;
     }
 
-    borrarNombre() {
-        this.creador.eliminarTextoInput();
+    setInicio(inicio) {
+        this.inicio = inicio;
     }
 
-    arrastrarObjeto(){
-        this.creador.moverObjetos(mouseX, mouseY);
+    getCreador() {
+        return this.creador;
     }
 
-    liberarObjeto(){
-        this.creador.soltarObjeto();
+    setCreador(creador) {
+        this.creador = creador;
+    }
+
+    getGuardado() {
+        return this.guardado;
+    }
+
+    setGuardado(guardado) {
+        this.guardado = guardado;
+    }
+
+    getPantalla() {
+        return this.pantalla;
+    }
+
+    setPantalla(pantalla) {
+        this.pantalla = pantalla;
     }
 }
