@@ -10,25 +10,31 @@ class Creador {
     }
 
     dibujarCreador() {
+        //Pintar pantalla y objetos
         imageMode(CORNER);
         image(this.pantalla, 0, 0, 1200, 700);
-        if ((mouseX > 881 && mouseX < 1096 && mouseY > 601 && mouseY < 658) || (mouseX > 652 && mouseX < 868 && mouseY > 601 && mouseY < 658)) {
-            cursor(HAND);
-        } else {
-            cursor(ARROW);
-        }
         this.input.pintar();
         this.input.mostarTexto();
         imageMode(CENTER);
         image(this.pintarBase, this.posX, this.posY);
         imageMode(CORNER);
+
+        //Cambiar el cursor del mouse
+        let base = (mouseX > 306.186 - (398 / 2) && mouseX < 306.186 + (398 / 2) && mouseY > 350 - (590 / 2) && mouseY < 350 + (590 / 2));
+        let botonGuardar = (mouseX > 652 && mouseX < 868 && mouseY > 601 && mouseY < 658);
+        let botonGuardados = (mouseX > 881 && mouseX < 1096 && mouseY > 601 && mouseY < 658);
+        let botonInput = (mouseX > 655 && mouseX < 920 && mouseY > 77 && mouseY < 107);
+        if (base || botonGuardar || botonGuardados || botonInput) {
+            cursor(HAND);
+        } else {
+            cursor(ARROW);
+        }
     }
 
+    //Mover base con objetos
     activarMoverObjetos() {
-        if (mouseX > 85 && mouseX < 502 && mouseY > 45 && mouseY < 650 && !this.mover) {
+        if (mouseX > 306.186 - (398 / 2) && mouseX < 306.186 + (398 / 2) && mouseY > 350 - (590 / 2) && mouseY < 350 + (590 / 2) && !this.mover) {
             this.mover = true;
-            /*this.posX = mX;
-            this.posY = mY;*/
         }
     }
 
