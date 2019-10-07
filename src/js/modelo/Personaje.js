@@ -7,6 +7,10 @@ class Personaje {
         this.fecha = fecha;
     }
 
+    dibujarBase(){
+        
+    }
+
     getPosX() {
         return this.posX;
     }

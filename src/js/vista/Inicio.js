@@ -1,6 +1,6 @@
 class Inicio {
     constructor() {
-        this.pantalla = loadImage("./data/inicio.jpg");;
+        this.pantalla = loadImage("./data/inicio.jpg");
     }
 
     dibujarInicio() {
