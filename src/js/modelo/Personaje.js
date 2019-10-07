@@ -5,18 +5,8 @@ class Personaje {
         this.nombre = nombre;
         this.id = id;
         this.fecha = fecha;
-        this.pintarBase = loadImage("./data/basegato.png");
     }
-
-    dibujarBase() {
-        imageMode(CENTER);
-        image(this.pintarBase, 306.186, 350);
-    }
-
-    moverPersonaje(mX, mY){
-        //if(mX>)
-    }
-
+    
     getPosX() {
         return this.posX;
     }

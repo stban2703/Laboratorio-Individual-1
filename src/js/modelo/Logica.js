@@ -13,6 +13,7 @@ class Logica {
                 break;
             case 1:
                 this.creador.dibujarCreador();
+                this.creador.moverObjetos(mouseX, mouseY);
                 break;
             case 2:
                 this.guardado.dibujaGuardado();
@@ -30,6 +31,7 @@ class Logica {
                 break;
             case 1:
                 this.creador.activarInput(mouseX, mouseY);
+                this.creador.activarMoverObjetos();
                 if (mouseX > 881 && mouseX < 1096 && mouseY > 603 && mouseY < 656) {
                     this.pantalla = 2;
                 }
@@ -50,6 +52,13 @@ class Logica {
 
     borrarNombre() {
         this.creador.eliminarTextoInput();
+    }
 
+    arrastrarObjeto(){
+        this.creador.moverObjetos(mouseX, mouseY);
+    }
+
+    liberarObjeto(){
+        this.creador.soltarObjeto();
     }
 }

@@ -24,9 +24,10 @@ function mousePressed() {
 }
 
 function mouseDragged() {
+    logica.arrastrarObjeto();
 
 }
 
 function mouseReleased() {
-
+    logica.liberarObjeto();
 }

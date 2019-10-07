@@ -1,8 +1,12 @@
 class Creador {
     constructor() {
         this.pantalla = loadImage("./data/creador.jpg");
+        this.pintarBase = loadImage("./data/basegato.png");
         this.input = new Input(655, 77);
-        this.personaje = new Personaje();
+        this.posX = 306.186;
+        this.posY = 350;
+        this.mover = false;
+        //this.personaje = new Personaje();
     }
 
     dibujarCreador() {
@@ -15,8 +19,32 @@ class Creador {
         }
         this.input.pintar();
         this.input.mostarTexto();
-        this.personaje.dibujarBase();
+        imageMode(CENTER);
+        image(this.pintarBase, this.posX, this.posY);
         imageMode(CORNER);
+    }
+
+    activarMoverObjetos() {
+        if (mouseX > 85 && mouseX < 502 && mouseY > 45 && mouseY < 650 && !this.mover) {
+            this.mover = true;
+            /*this.posX = mX;
+            this.posY = mY;*/
+        }
+    }
+
+    moverObjetos(mX, mY) {
+        if (this.mover) {
+            this.posX = mX;
+            this.posY = mY;
+        }
+    }
+
+    soltarObjeto() {
+        if (this.mover) {
+            this.posX = 306.186;
+            this.posY = 350;
+            this.mover = false;
+        }
     }
 
     activarInput(mX, mY) {
@@ -38,5 +66,21 @@ class Creador {
             let indice = this.input.getTexto().length - 1;
             this.input.setTexto(this.input.getTexto().substring(0, indice));
         }
+    }
+
+    getPosX() {
+        return this.posX;
+    }
+
+    setPosX(posX) {
+        this.posX = posX;
+    }
+
+    getPosY() {
+        return this.posY;
+    }
+
+    setPosY(posY) {
+        this.posY = posY;
     }
 }
