@@ -10,10 +10,17 @@ function draw() {
     logica.dibujarPantalla();
 }
 
+function keyTyped() {
+    if (keyCode != BACKSPACE) {
+        logica.escribirNombre();
+    } else {
+        logica.borrarNombre();
+    }
+}
+
 function mousePressed() {
     console.log("x: " + mouseX + " " + "y: " + mouseY);
-    logica.cambiarPantalla();
-
+    logica.interaccionPantalla();
 }
 
 function mouseDragged() {
