@@ -1,30 +1,9 @@
 class Personaje {
-    constructor(posX, posY, nombre, id, fecha) {
-        this.posX = posX;
-        this.posY = posY;
+    constructor(nombre, id, fecha) {
         this.nombre = nombre;
         this.id = id;
         this.fecha = fecha;
-    }
-
-    dibujarBase(){
-        
-    }
-
-    getPosX() {
-        return this.posX;
-    }
-
-    setPosX(posX) {
-        this.posX = posX;
-    }
-
-    getPosY() {
-        return this.posY;
-    }
-
-    setPosY(posY) {
-        this.posY = posY;
+        this.arregloPersonajes = [];
     }
 
     getNombre() {
@@ -50,5 +29,12 @@ class Personaje {
     setFecha(fecha) {
         this.fecha = fecha;
     }
-
+    
+    getArregloPersonajes() {
+        return this.arregloPersonajes;
+    }
+    
+    setArregloPersonajes(arregloPersonajes) {
+        this.arregloPersonajes = arregloPersonajes;
+    }
 }

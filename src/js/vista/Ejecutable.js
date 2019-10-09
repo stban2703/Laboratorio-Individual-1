@@ -19,7 +19,7 @@ function keyTyped() {
 }
 
 function mousePressed() {
-    console.log("x: " + mouseX + " " + "y: " + mouseY);
+    //console.log("x: " + mouseX + " " + "y: " + mouseY);
     logica.interaccionPantalla();
 }
 
