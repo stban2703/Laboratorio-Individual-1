@@ -4,6 +4,7 @@ class Creador {
         this.input = new Input(655, 77);
         this.moverBase = false;
         this.base = new Base(306.186, 350);
+        //this.ojo = new Ojo(700, 261.798);
     }
 
     dibujarCreador() {
@@ -11,6 +12,7 @@ class Creador {
         imageMode(CORNER);
         image(this.pantalla, 0, 0, 1200, 700);
         this.base.dibujarBase();
+        //this.ojo.dibujarOjos();
         this.input.pintar();
         this.input.mostarTexto();
 
@@ -18,10 +20,12 @@ class Creador {
         let botonBase = (mouseX > 306.186 - (398 / 2) && mouseX < 306.186 + (398 / 2) && mouseY > 350 - (590 / 2) && mouseY < 350 + (590 / 2));
         let botonGuardar = (mouseX > 652 && mouseX < 868 && mouseY > 601 && mouseY < 658);
         let botonGuardados = (mouseX > 881 && mouseX < 1096 && mouseY > 601 && mouseY < 658);
-        let botonOjos = (mouseX > 684.394 - (92 / 2) && mouseX < 684.394 + (92 / 2) && mouseY > 261.798 - (39 / 2) && mouseY < 261.798 + (39 / 2));
+        let botonOjoAzul = (mouseX > 700 - (92 / 2) && mouseX < 700 + (92 / 2) && mouseY > 261.798 - (39 / 2) && mouseY < 261.798 + (39 / 2));
+        let botonOjoVerde = (mouseX > 850 - (92 / 2) && mouseX < 850 + (92 / 2) && mouseY > 261.798 - (39 / 2) && mouseY < 261.798 + (39 / 2));
+        let botonOjoAmarillo = (mouseX > 1000 - (92 / 2) && mouseX < 1000 + (92 / 2) && mouseY > 261.798 - (39 / 2) && mouseY < 261.798 + (39 / 2));
         let botonInput = (mouseX > 655 && mouseX < 920 && mouseY > 77 && mouseY < 107);
 
-        if (botonBase || botonGuardar || botonGuardados || botonOjos || botonInput) {
+        if (botonBase || botonGuardar || botonGuardados || botonOjoAzul || botonOjoVerde || botonOjoAmarillo || botonInput) {
             cursor(HAND);
         } else {
             cursor(ARROW);

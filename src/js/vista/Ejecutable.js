@@ -11,9 +11,13 @@ function draw() {
 }
 
 function keyTyped() {
-    if (keyCode != BACKSPACE) {
+    if (keyCode != BACKSPACE && keyCode != ENTER) {
         logica.getCreador().escribirTextoInput(key);
-    } else {
+    }
+}
+
+function keyPressed() {
+    if (keyCode == BACKSPACE) {
         logica.getCreador().eliminarTextoInput();
     }
 }
