@@ -13,10 +13,10 @@ class Logica {
                 break;
             case 1:
                 this.creador.dibujarCreador();
-                this.creador.moverObjetos(mouseX, mouseY);
+                this.creador.arrastrarBase();
                 break;
             case 2:
-                this.guardado.dibujaGuardado();
+                this.guardado.dibujarGuardado();
             default:
                 break;
         }
@@ -31,7 +31,7 @@ class Logica {
                 break;
             case 1:
                 this.creador.activarInput(mouseX, mouseY);
-                this.creador.activarMoverObjetos();
+                this.creador.activarMoverBase();
                 if (mouseX > 881 && mouseX < 1096 && mouseY > 603 && mouseY < 656) {
                     this.pantalla = 2;
                 }

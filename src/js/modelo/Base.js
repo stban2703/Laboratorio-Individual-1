@@ -1,5 +1,5 @@
-class Base{
-    constructor(posX, posY){
+class Base {
+    constructor(posX, posY) {
         this.posX = posX;
         this.posY = posY;
         this.pintarBase = loadImage("./data/basegato.png");
@@ -8,7 +8,7 @@ class Base{
     dibujarBase() {
         imageMode(CENTER);
         image(this.pintarBase, this.posX, this.posY);
-        
+
         //Para evitar cambios en otras imagenes
         imageMode(CORNER);
     }

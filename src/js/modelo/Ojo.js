@@ -1,6 +1,6 @@
-class Ojo extends Base {
+class Ojo {
     constructor(posX, posY) {
-        super(posX,posY);
+        //super(posX,posY);
         this.arregloOjos = [];
         this.verde = loadImage("./data/ojosverdes.png");
         this.azul = loadImage("./data/ojosazules.png");

@@ -28,22 +28,22 @@ class Creador {
         }
     }
 
-    activarMoverObjetos() {
+    activarMoverBase() {
         //Mover Base
-        let base = (mouseX > 306.186 - (398 / 2) && mouseX < 306.186 + (398 / 2) && mouseY > 350 - (590 / 2) && mouseY < 350 + (590 / 2));
-        if (base && !this.moverBase) {
+        let botonBase = (mouseX > 306.186 - (398 / 2) && mouseX < 306.186 + (398 / 2) && mouseY > 350 - (590 / 2) && mouseY < 350 + (590 / 2));
+        if (botonBase && !this.moverBase) {
             this.moverBase = true;
         }
     }
 
-    moverObjetos(mX, mY) {
+    arrastrarBase() {
         if (this.moverBase) {
-            this.base.setPosX(mX);
-            this.base.setPosY(mY);
+            this.base.setPosX(mouseX);
+            this.base.setPosY(mouseY);
         }
     }
 
-    soltarObjeto() {
+    soltarBase() {
         //Soltar base
         if (this.moverBase) {
             this.base.setPosX(306.186);
@@ -71,21 +71,5 @@ class Creador {
             let indice = this.input.getTexto().length - 1;
             this.input.setTexto(this.input.getTexto().substring(0, indice));
         }
-    }
-
-    getPosX() {
-        return this.posX;
-    }
-
-    setPosX(posX) {
-        this.posX = posX;
-    }
-
-    getPosY() {
-        return this.posY;
-    }
-
-    setPosY(posY) {
-        this.posY = posY;
     }
 }

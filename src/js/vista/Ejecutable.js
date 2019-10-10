@@ -24,9 +24,9 @@ function mousePressed() {
 }
 
 function mouseDragged() {
-    logica.getCreador().moverObjetos(mouseX, mouseY);
+    logica.getCreador().arrastrarBase();
 }
 
 function mouseReleased() {
-    logica.getCreador().soltarObjeto();
+    logica.getCreador().soltarBase();
 }
