@@ -4,6 +4,8 @@ class Logica {
         this.creador = new Creador();
         this.guardado = new Guardado();
         this.pantalla = 0;
+        this.arregloCreados = [];
+        this.date = new Date();
     }
 
     dibujarPantalla() {
@@ -17,6 +19,16 @@ class Logica {
                 break;
             case 2:
                 this.guardado.dibujarGuardado();
+                for (let i = 0; i < this.arregloCreados.length; i++) {
+                    fill(255);
+                    textSize(20);
+                    textAlign(CENTER);
+                    let id = this.arregloCreados[i].getId();
+                    let nombre = this.arregloCreados[i].getNombre();
+                    let fecha = this.arregloCreados[i].getFecha();
+                    text(id + " - " + nombre + " - " + fecha, width / 2, 150 + (50 * i));
+                    textAlign(LEFT);
+                }
             default:
                 break;
         }
@@ -31,9 +43,19 @@ class Logica {
                 break;
             case 1:
                 this.creador.activarInput(mouseX, mouseY);
-                this.creador.activarMoverBase();
+                this.creador.activarUsoObjetos();
                 if (mouseX > 881 && mouseX < 1096 && mouseY > 603 && mouseY < 656) {
                     this.pantalla = 2;
+                }
+                let botonGuardar = (mouseX > 652 && mouseX < 868 && mouseY > 601 && mouseY < 658);
+                let dia = this.date.getDate();
+                let mes = this.date.getMonth();
+                let anio = this.date.getFullYear();
+                if (botonGuardar && this.creador.input.getTexto().length > 0) {
+                    this.arregloCreados.push(new Personaje(this.creador.input.getTexto(), this.arregloCreados.length, dia + "/" + mes + "/" + anio));
+                    alert("Datos del gato guardados");
+                } else if (botonGuardar) {
+                    alert("Debes poner un nombre al gato");
                 }
                 break;
             case 2:
@@ -44,6 +66,10 @@ class Logica {
             default:
                 break;
         }
+    }
+
+    guardarPersonaje() {
+
     }
 
     getInicio() {
@@ -78,3 +104,7 @@ class Logica {
         this.pantalla = pantalla;
     }
 }
+
+/*for (let i = 0; i < arregloCreados; i++) {
+    text(this.arregloCreados[i].getNombre(), 100, 100);
+}*/

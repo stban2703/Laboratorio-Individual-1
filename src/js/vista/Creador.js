@@ -29,7 +29,6 @@ class Creador {
         }
 
         imageMode(CORNER);
-        //this.ojo.dibujarOjos();
         this.input.pintar();
         this.input.mostarTexto();
 
@@ -52,7 +51,7 @@ class Creador {
         let botonCollar = (mouseX > 709.502 - 58 && mouseX < 709.502 + 58 && mouseY > 535.118 - 21.2 && mouseY < 535.118 + 21.2);
         let botonPuntos = (mouseX > 844.365 - 58 && mouseX < 844.365 + 58 && mouseY > 525.667 - 12 && mouseY < 525.667 + 12);
         let botonQuitar = (mouseX > 966.216 - 38.5 && mouseX < 966.216 + 38.5 && mouseY > 523.254 - 23 && mouseY < 523.254 + 23);
-
+        //Cambiar cursor del mouse
         if (botonBase || botonGuardar || botonGuardados || botonOjoAzul || botonOjoVerde || botonOjoAmarillo || botonInput
             || peloBlanco || peloNegro || peloTigre || peloSiames || botonCollar || botonPuntos || botonQuitar) {
             cursor(HAND);
@@ -61,7 +60,7 @@ class Creador {
         }
     }
 
-    activarMoverBase() {
+    activarUsoObjetos() {
         //Area base
         let botonBase = (mouseX > 306.186 - (398 / 2) && mouseX < 306.186 + (398 / 2) && mouseY > 350 - (590 / 2) && mouseY < 350 + (590 / 2));
         //Mover Base
@@ -147,7 +146,7 @@ class Creador {
         }
     }
 
-    arrastrarBase() {
+    arrastrarObjetos() {
         if (this.moverBase) {
             //Mover base con objetos
             this.base.setPosX(mouseX);
@@ -201,7 +200,7 @@ class Creador {
         }
     }
 
-    soltarBase() {
+    soltarObjetos() {
         //Soltar base
         if (this.moverBase) {
             this.base.setPosX(306.186);
@@ -325,5 +324,13 @@ class Creador {
             let indice = this.input.getTexto().length - 1;
             this.input.setTexto(this.input.getTexto().substring(0, indice));
         }
+    }
+
+    getInput() {
+        return this.input;
+    }
+
+    setInput(input) {
+        this.input = input;
     }
 }

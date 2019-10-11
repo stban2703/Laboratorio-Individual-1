@@ -3,7 +3,6 @@ class Personaje {
         this.nombre = nombre;
         this.id = id;
         this.fecha = fecha;
-        this.arregloPersonajes = [];
     }
 
     getNombre() {
@@ -29,11 +28,11 @@ class Personaje {
     setFecha(fecha) {
         this.fecha = fecha;
     }
-    
+
     getArregloPersonajes() {
         return this.arregloPersonajes;
     }
-    
+
     setArregloPersonajes(arregloPersonajes) {
         this.arregloPersonajes = arregloPersonajes;
     }
