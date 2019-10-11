@@ -8,9 +8,6 @@ class Base {
     dibujarBase() {
         imageMode(CENTER);
         image(this.pintarBase, this.posX, this.posY);
-
-        //Para evitar cambios en otras imagenes
-        imageMode(CORNER);
     }
 
     getPosX() {

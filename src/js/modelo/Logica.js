@@ -13,7 +13,7 @@ class Logica {
                 break;
             case 1:
                 this.creador.dibujarCreador();
-                this.creador.arrastrarBase();
+                //this.creador.arrastrarBase();
                 break;
             case 2:
                 this.guardado.dibujarGuardado();
