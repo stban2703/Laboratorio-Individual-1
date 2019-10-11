@@ -22,11 +22,11 @@ class Pelaje extends Base {
         }
 
         if (this.ponerTigre) {
-            image(this.tigre, this.posX-12, this.posY);
+            image(this.tigre, this.posX - 12, this.posY);
         }
 
         if (this.ponerSiames) {
-            image(this.siames, this.posX, this.posY+6);
+            image(this.siames, this.posX, this.posY + 6);
         }
     }
 

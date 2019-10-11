@@ -8,7 +8,8 @@ class Creador {
         this.verde = loadImage("./data/ojosverdes.png");
         this.azul = loadImage("./data/ojosazules.png");
         this.amarillo = loadImage("./data/ojosamarillos.png");
-        this.pelaje = new Pelaje(this.base.posX, this.base.posY);
+        this.pelaje = new Pelaje(this.base.getPosX(), this.base.getPosY());
+        this.collar = new Collar(this.base.getPosX() + (372.204 - this.base.getPosX()), this.base.getPosY() + (437 - this.base.getPosY()));
         this.arregloOjos.push(new Ojo(700, 261.798, this.verde));
         this.arregloOjos.push(new Ojo(850, 261.798, this.azul));
         this.arregloOjos.push(new Ojo(1000, 261.798, this.amarillo));
@@ -20,6 +21,7 @@ class Creador {
         image(this.pantalla, 0, 0, 1200, 700);
         this.base.dibujarBase();
         this.pelaje.pintarPelaje();
+        this.collar.pintarCollar();
         //Arreglo de ojos
         for (let i = 0; i < this.arregloOjos.length; i++) {
             imageMode(CENTER);
@@ -49,10 +51,10 @@ class Creador {
         //Area de collares
         let botonCollar = (mouseX > 709.502 - 58 && mouseX < 709.502 + 58 && mouseY > 535.118 - 21.2 && mouseY < 535.118 + 21.2);
         let botonPuntos = (mouseX > 844.365 - 58 && mouseX < 844.365 + 58 && mouseY > 525.667 - 12 && mouseY < 525.667 + 12);
-        //let botonQuitar = (mouseX > 966.216 )
+        let botonQuitar = (mouseX > 966.216 - 38.5 && mouseX < 966.216 + 38.5 && mouseY > 523.254 - 23 && mouseY < 523.254 + 23);
 
         if (botonBase || botonGuardar || botonGuardados || botonOjoAzul || botonOjoVerde || botonOjoAmarillo || botonInput
-            || peloBlanco || peloNegro || peloTigre || peloSiames || botonCollar || botonPuntos) {
+            || peloBlanco || peloNegro || peloTigre || peloSiames || botonCollar || botonPuntos || botonQuitar) {
             cursor(HAND);
         } else {
             cursor(ARROW);
@@ -101,6 +103,26 @@ class Creador {
             this.pelaje.setPonerSiames(true);
         }
 
+        //Area de collares
+        let botonCollar = (mouseX > 709.502 - 58 && mouseX < 709.502 + 58 && mouseY > 535.118 - 21.2 && mouseY < 535.118 + 21.2);
+        let botonPuntos = (mouseX > 844.365 - 58 && mouseX < 844.365 + 58 && mouseY > 525.667 - 12 && mouseY < 525.667 + 12);
+        let botonQuitar = (mouseX > 966.216 - 38.5 && mouseX < 966.216 + 38.5 && mouseY > 523.254 - 23 && mouseY < 523.254 + 23);
+
+        if (botonCollar && !this.collar.getPonerNormal()) {
+            this.collar.setPonerNormal(true);
+            this.collar.setPonerPuntos(false);
+        }
+
+        if (botonPuntos && !this.collar.getPonerPuntos()) {
+            this.collar.setPonerNormal(false);
+            this.collar.setPonerPuntos(true);
+        }
+
+        if (botonQuitar && (this.collar.getPonerNormal() || this.collar.getPonerPuntos())) {
+            this.collar.setPonerNormal(false);
+            this.collar.setPonerPuntos(false);
+        }
+
         //Area de ojos
         let botonOjoVerde = (mouseX > 700 - (92 / 2) && mouseX < 700 + (92 / 2) && mouseY > 261.798 - (39 / 2) && mouseY < 261.798 + (39 / 2));
         let botonOjoAzul = (mouseX > 850 - (92 / 2) && mouseX < 850 + (92 / 2) && mouseY > 261.798 - (39 / 2) && mouseY < 261.798 + (39 / 2));
@@ -135,6 +157,12 @@ class Creador {
             if (this.pelaje.getPonerBlanco() || this.pelaje.getPonerNegro() || this.pelaje.getPonerTigre() || this.pelaje.getPonerSiames()) {
                 this.pelaje.setPosX(mouseX);
                 this.pelaje.setPosY(mouseY);
+            }
+
+            //Mover collar con base
+            if (this.collar.getPonerNormal() || this.collar.getPonerPuntos()) {
+                this.collar.setPosX(this.base.getPosX() + 66.018);
+                this.collar.setPosY(this.base.getPosY() + 87);
             }
 
             //Mover ojos con base
@@ -175,13 +203,14 @@ class Creador {
 
     soltarBase() {
         //Soltar base
-
         if (this.moverBase) {
             this.base.setPosX(306.186);
             this.base.setPosY(350);
             this.pelaje.setPosX(306.186);
             this.pelaje.setPosY(350);
             this.moverBase = false;
+            this.collar.setPosX(this.base.getPosX() + (372.204 - this.base.getPosX()));
+            this.collar.setPosY(this.base.getPosY() + (437 - this.base.getPosY()));
         }
 
         //Pegar ojo verde
@@ -258,26 +287,22 @@ class Creador {
             this.arregloOjos[2].setActivarMoverOjo(false);
         }
 
-
         //Coordenada de la posicion del ojo verde en la base
         if (this.arregloOjos[0].getPegarOjo() && !this.arregloOjos[0].getActivarMoverOjo()) {
             this.arregloOjos[0].setPosX(this.base.getPosX() + (381.703 - 306.186));
             this.arregloOjos[0].setPosY(this.base.getPosY() - (350 - 166.8));
-
         }
 
         //Coordenada de la posicion del ojo azul en la base
         if (this.arregloOjos[1].getPegarOjo() && !this.arregloOjos[1].getActivarMoverOjo()) {
             this.arregloOjos[1].setPosX(this.base.getPosX() + (381.703 - 306.186));
             this.arregloOjos[1].setPosY(this.base.getPosY() - (350 - 166.8));
-
         }
 
         //Coordenada de la posicion del ojo verde en la base
         if (this.arregloOjos[2].getPegarOjo() && !this.arregloOjos[2].getActivarMoverOjo()) {
             this.arregloOjos[2].setPosX(this.base.getPosX() + (381.703 - 306.186));
             this.arregloOjos[2].setPosY(this.base.getPosY() - (350 - 166.8));
-
         }
     }
 
