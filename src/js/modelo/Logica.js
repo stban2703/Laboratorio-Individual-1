@@ -106,7 +106,7 @@ class Logica {
                     let posicionX = this.arregloCreados[i].getPosX();
                     let posicionY = this.arregloCreados[i].getPosY() + 75 * i;
                     if (mouseX > (posicionX + 569) - 73 && mouseX < (posicionX + 569) + 73 && mouseY > posicionY - 19 && mouseY < posicionY + 19) {
-                        this.arregloCreados[i].getImagenPng().save(this.arregloCreados[i].getNombre() + ".jpg");
+                        this.arregloCreados[i].getImagenPng().save(this.arregloCreados[i].getNombre() + ".png");
                     }
                 }
                 break;
