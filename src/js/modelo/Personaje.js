@@ -1,8 +1,11 @@
 class Personaje {
-    constructor(nombre, id, fecha) {
+    constructor(nombre, id, fecha, imagenPng, posX, posY) {
         this.nombre = nombre;
         this.id = id;
         this.fecha = fecha;
+        this.imagenPng = imagenPng;
+        this.posX = posX;
+        this.posY = posY;
     }
 
     getNombre() {
@@ -35,5 +38,29 @@ class Personaje {
 
     setArregloPersonajes(arregloPersonajes) {
         this.arregloPersonajes = arregloPersonajes;
+    }
+
+    getImagenPng() {
+        return this.imagenPng;
+    }
+
+    setImagenPng(imagenPng) {
+        this.imagenPng = imagenPng;
+    }
+
+    getPosX() {
+        return this.posX;
+    }
+
+    setPosX(posX) {
+        this.posX = posX;
+    }
+
+    getPosY() {
+        return this.posY;
+    }
+
+    setPosY(posY) {
+        this.posY = posY;
     }
 }
