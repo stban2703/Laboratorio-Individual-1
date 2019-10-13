@@ -23,7 +23,6 @@ function keyPressed() {
 }
 
 function mousePressed() {
-    //console.log("x: " + mouseX + " " + "y: " + mouseY);
     logica.interaccionPantalla();
 }
 

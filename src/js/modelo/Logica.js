@@ -68,7 +68,7 @@ class Logica {
 
                     //Agregar Gato
                     this.arregloCreados.push(new Personaje(nombreGato, this.arregloCreados.length,
-                        dia + "/" + mes + "/" + anio + " " + hora + ":" + min + ":" + seg, this.imagenGato, 335, 150));
+                        mes + "-" + dia + "-" + anio + " " + hora + ":" + min + ":" + seg, this.imagenGato, 335, 150));
 
                     alert("Gato guardado.");
 
